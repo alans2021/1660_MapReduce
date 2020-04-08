@@ -16,6 +16,8 @@ public class GUI {
     private JTextArea textArea;
     private JTextArea select;
     private JTextField term;
+    private JLabel hyperlink;
+    private JScrollPane jScrollPane;
     private File[] dataFiles;
 
     private TopN obj;
@@ -139,21 +141,21 @@ public class GUI {
                 panel.remove(action);
                 panel.remove(search);
                 panel.remove(topN);
-                JScrollPane scrollPane = new JScrollPane();
-                scrollPane.setViewportView(table);
-                panel.add(scrollPane);
-                reset(scrollPane);
+                jScrollPane = new JScrollPane();
+                jScrollPane.setViewportView(table);
+                panel.add(jScrollPane);
+                reset();
             }
         }
 
-        private void reset(JScrollPane table){
-            JLabel hyperlink = new JLabel("Back to Search");
+        private void reset(){
+            hyperlink = new JLabel("Back to Search");
             hyperlink.setForeground(Color.BLUE.darker());
             hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             hyperlink.addMouseListener(new MouseAdapter() {
                 public void mouseClicked(MouseEvent e) {
                     panel.remove(hyperlink);
-                    panel.remove(table);
+                    panel.remove(jScrollPane);
                     textArea.setText("Engine was loaded & \n");
                     textArea.append("Inverted Indices were constructed successfully");
                     select = new JTextArea("Please Select Action");
