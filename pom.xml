@@ -7,7 +7,17 @@
     <groupId>CS1660</groupId>
     <artifactId>MapReduce</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -25,31 +35,56 @@
         </plugins>
     </build>
 
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.google.cloud</groupId>
                 <artifactId>libraries-bom</artifactId>
-                <version>3.2.0</version>
+                <version>4.4.1</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>com.google.api-client</groupId>
-                <artifactId>google-api-client</artifactId>
-                <version>1.30.9</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.apis</groupId>
-                <artifactId>google-api-services-dataproc</artifactId>
-                <version>v1-rev20200323-1.30.9</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.cloud</groupId>
-                <artifactId>google-cloud-storage</artifactId>
-            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!-- Installing the Cloud Storage client Library-->
+    <dependencies>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-dataproc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-storage</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!--<dependencyManagement>-->
+        <!--<dependencies>-->
+            <!--<dependency>-->
+                <!--<groupId>com.google.cloud</groupId>-->
+                <!--<artifactId>libraries-bom</artifactId>-->
+                <!--<version>3.2.0</version>-->
+                <!--<type>pom</type>-->
+                <!--<scope>import</scope>-->
+            <!--</dependency>-->
+            <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+                <!--&lt;!&ndash;<groupId>com.google.api-client</groupId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<artifactId>google-api-client</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<version>1.30.9</version>&ndash;&gt;-->
+            <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+            <!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+                <!--&lt;!&ndash;<groupId>com.google.apis</groupId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<artifactId>google-api-services-dataproc</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<version>v1-rev20200323-1.30.9</version>&ndash;&gt;-->
+            <!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+            <!--<dependency>-->
+                <!--<groupId>com.google.cloud</groupId>-->
+                <!--<artifactId>google-cloud-storage</artifactId>-->
+            <!--</dependency>-->
+        <!--</dependencies>-->
+    <!--</dependencyManagement>-->
 
 
 </project>

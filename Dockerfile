@@ -1,4 +1,6 @@
-FROM maven:3.6.3-jdk-8
-COPY . .
-WORKDIR /
-CMD ["mvn", "package", "exec:java"]
+FROM openjdk:7
+COPY ./src /src
+COPY ./Data /data
+WORKDIR /src
+RUN javac gui_driver.java
+CMD ["java", "gui_driver"]
