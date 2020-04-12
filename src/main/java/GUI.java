@@ -18,7 +18,9 @@ public class GUI {
     private JTextField term;
     private JLabel hyperlink;
     private JScrollPane jScrollPane;
-    private File[] dataFiles;
+    private String[] dataFiles;
+//    private GCP_Connection connect;
+    private PostingList postingList;
 
     private TopN obj;
     public GUI() {
@@ -60,17 +62,23 @@ public class GUI {
                 JFileChooser chooser = new JFileChooser("C:\\Users\\alans\\Documents" +
                         "\\College\\Junior year\\Spring\\CS 1660\\Project\\Data");
                 chooser.setMultiSelectionEnabled(true);
+                chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 int returnVal = chooser.showOpenDialog(frame);
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    dataFiles = chooser.getSelectedFiles();
+                    File[] chosen = chooser.getSelectedFiles();
+                    dataFiles = new String[chosen.length];
                     button2.setEnabled(true);
-                    for(File f : dataFiles){
+                    for(int i = 0; i < chosen.length; i++){
+                        File f = chosen[i];
                         fileNames.append(f.getName() + "\n");
+                        dataFiles[i] = f.getName();
                     }
                 }
             }
             else if(e.getSource() == button2){
-                Mapper map = new Mapper(dataFiles);
+                new GCP_Connection(dataFiles);
+                //postingList = new PostingList(dataFiles);
+
                 panel.remove(fileNames);
                 panel.remove(button1);
                 panel.remove(button2);
@@ -98,10 +106,10 @@ public class GUI {
             panel.remove(search);
             panel.remove(topN);
 
+            postingList = new PostingList(dataFiles);
             if(e.getSource() == search) {
                 textArea.setText("Enter Your Search Term");
                 term = new JTextField("Type Your Search Term...");
-
             }
             else {
                 textArea.setText("Enter Your N Value");
