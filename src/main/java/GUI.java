@@ -76,7 +76,7 @@ public class GUI {
                 }
             }
             else if(e.getSource() == button2){
-                //new GCP_Connection(dataFiles);
+                new GCP_Connection(dataFiles);
                 postingList = new PostingList(dataFiles);
 
                 panel.remove(fileNames);
