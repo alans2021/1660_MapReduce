@@ -76,7 +76,7 @@ public class GUI {
                 }
             }
             else if(e.getSource() == button2){
-                new GCP_Connection(dataFiles);
+                //new GCP_Connection(dataFiles);
                 postingList = new PostingList(dataFiles);
 
                 panel.remove(fileNames);
@@ -189,7 +189,7 @@ public class GUI {
         public void keyReleased(KeyEvent e) {
             try{
                 int n = Integer.parseInt(term.getText());
-                obj = new TopN(n);
+                obj = new TopN(n, postingList.getPostingMap());
                 textArea.setText("Inverted indices were constructed successfully");
             }
             catch (Exception ex){}
