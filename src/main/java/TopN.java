@@ -7,11 +7,12 @@ public class TopN {
     private String[][] data;
     private HashMap<String, Integer> totalCounts = new HashMap<>();
 
-    public TopN(int x, HashMap<String, HashMap<String, Integer>> map){
+    public TopN(int x, String[] dataFiles){
         limit = x;
         data = new String[limit][x];
+        PostingList postingList = new PostingList(dataFiles);
 
-        Iterator iterator = map.entrySet().iterator();
+        Iterator iterator = postingList.getPostingMap().entrySet().iterator();
         while(iterator.hasNext()){
             Map.Entry pair = (Map.Entry) iterator.next();
             String word = (String) pair.getKey();

@@ -19,8 +19,6 @@ public class GUI {
     private JLabel hyperlink;
     private JScrollPane jScrollPane;
     private String[] dataFiles;
-//    private GCP_Connection connect;
-    private PostingList postingList;
 
     private TopN obj;
     public GUI() {
@@ -77,7 +75,6 @@ public class GUI {
             }
             else if(e.getSource() == button2){
                 new GCP_Connection(dataFiles);
-                postingList = new PostingList(dataFiles);
 
                 panel.remove(fileNames);
                 panel.remove(button1);
@@ -106,7 +103,6 @@ public class GUI {
             panel.remove(search);
             panel.remove(topN);
 
-            postingList = new PostingList(dataFiles);
             if(e.getSource() == search) {
                 textArea.setText("Enter Your Search Term");
                 term = new JTextField("Type Your Search Term...");
@@ -132,7 +128,7 @@ public class GUI {
             String text = term.getText();
             if(text != null && !text.equals("")){
                 if(textArea.getText().contains("Search")){
-                    Search test = new Search(text, postingList.getPostingMap());
+                    Search test = new Search(text, dataFiles);
                     textArea.setText("You searched for: " + test.getTerm() + "\n");
                     textArea.append("Executed in " + test.getElapsedTime() + "ms");
                     table = new JTable(test.getData(), test.getColumnNames());
@@ -189,7 +185,7 @@ public class GUI {
         public void keyReleased(KeyEvent e) {
             try{
                 int n = Integer.parseInt(term.getText());
-                obj = new TopN(n, postingList.getPostingMap());
+                obj = new TopN(n, dataFiles);
                 textArea.setText("Inverted indices were constructed successfully");
             }
             catch (Exception ex){}

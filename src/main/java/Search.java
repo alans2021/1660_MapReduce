@@ -14,10 +14,11 @@ public class Search {
     private String searchTerm;
     private long startTime;
 
-    public Search(String x, HashMap<String, HashMap<String, Integer>> map){
+    public Search(String x, String[] dataFiles){
         startTime = System.currentTimeMillis();
+        PostingList postingList = new PostingList(dataFiles);
         searchTerm = x;
-        HashMap<String, Integer> list = map.get(x);
+        HashMap<String, Integer> list = postingList.getPostingMap().get(x);
         Iterator iterator = list.entrySet().iterator();
         data = new String[list.size()][];
 
