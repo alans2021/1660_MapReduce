@@ -17,6 +17,10 @@ public class PostingList {
         setOutputData();
     }
 
+    public HashMap<String, HashMap<String, Integer>> getPostingMap() {
+        return postingMap;
+    }
+
     private void setOutputData(){
         //Get Bucket with data files and output
         Bucket bucket = storage.get(storageBucket);
@@ -49,7 +53,7 @@ public class PostingList {
                     for(String docCount : docCounts){
                         //For each indexing, add entry
                         String[] docCountComp = docCount.split("=");
-                        doc_map.put(docCountComp[0], Integer.parseInt(docCountComp[1]));
+                        doc_map.put(directory + "/" + docCountComp[0], Integer.parseInt(docCountComp[1]));
                     }
                 }
                 else{
@@ -61,10 +65,10 @@ public class PostingList {
                         //If that file already exists, have to add the counts
                         if(count != null) {
                             count += Integer.parseInt(docCountComp[1]);
-                            doc_map.put(docCountComp[0], count);
+                            doc_map.put(directory + "/" + docCountComp[0], count);
                         }
                         else
-                            doc_map.put(docCountComp[0], Integer.parseInt(docCountComp[1]));
+                            doc_map.put(directory + "/" + docCountComp[0], Integer.parseInt(docCountComp[1]));
                     }
                 }
                 postingMap.put(word, doc_map);

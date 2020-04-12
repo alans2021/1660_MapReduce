@@ -132,7 +132,7 @@ public class GUI {
             String text = term.getText();
             if(text != null && !text.equals("")){
                 if(textArea.getText().contains("Search")){
-                    Search test = new Search(text);
+                    Search test = new Search(text, postingList.getPostingMap());
                     textArea.setText("You searched for: " + test.getTerm() + "\n");
                     textArea.append("Executed in " + test.getElapsedTime() + "ms");
                     table = new JTable(test.getData(), test.getColumnNames());
