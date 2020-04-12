@@ -74,7 +74,7 @@ public class PostingList {
                 postingMap.put(word, doc_map);
             }
         }
-        System.out.println();
+        System.out.println(postingMap.toString());
     }
 
 
