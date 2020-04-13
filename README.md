@@ -1,3 +1,9 @@
+Screen Recording Pt 1 link:
+https://youtu.be/K7mQX3rQ4NI 
+
+Screen Recording Pt 2 link:
+https://youtu.be/vrBSPU9QFPQ 
+
 Items done on Project Grading Criteria:
 
 1. Java Application and Execution on Docker
